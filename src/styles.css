@@ -260,3 +260,21 @@ h2 { font-size: 1.15rem; margin: 0; }
 .code-big { font-size: 2rem; width: 6em; text-align: center; }
 .teacher-page { flex: 1; min-height: 0; overflow: auto; display: grid; gap: 10px; align-content: start; }
 .teacher-page .panel { flex: none; overflow: visible; }
+
+/* ===== 台灣標準直式注音 ===== */
+.wz { display: inline-flex; gap: .12em; align-items: center; }
+.cz { display: inline-flex; align-items: center; }
+.cz-hl .cz-char { color: #b91c1c; }
+.cz .zy { font-size: .3em; margin-left: .08em; }
+.zy { display: inline-flex; flex-direction: column; align-items: center; line-height: 1.02; vertical-align: middle; position: relative; padding-right: .55em; }
+.zy-sym { position: relative; display: block; }
+.zy-tone { position: absolute; left: 100%; top: -.3em; margin-left: .02em; font-size: 1em; line-height: 1; }
+.zy-light { display: block; line-height: .6; height: .55em; }
+.zy-cue { font-size: 1.5rem; }
+.cue { display: inline-flex; align-items: center; gap: .3em; }
+.word .wz { font-size: clamp(3rem, 13dvh, 6.5rem); }
+.stage > .sentence { font-size: clamp(1.3rem, 3.6dvh, 2rem); }
+.d-wz-big { font-size: 220px; }
+.d-wz-small { font-size: 110px; }
+.d-card-pair { display: flex; align-items: center; gap: 24px; }
+.d-zy-xl { font-size: 150px; }

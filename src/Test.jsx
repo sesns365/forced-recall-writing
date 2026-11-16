@@ -4,6 +4,7 @@ import LessonPicker from './LessonPicker.jsx';
 import { DELAYS, targetOf, zhuyinOf, lessonLabel, intervalDays } from './logic.js';
 import { addRetention, loadRecords, getActiveTest, setActiveTest } from './records.js';
 import { speak } from './speech.js';
+import { ZhuyinColumn } from './Zhuyin.jsx';
 
 const HOLD_MS = 3000;
 
@@ -137,7 +138,7 @@ export function TestRunner({ lessons, seat, test, onExit }) {
           {current.mode === 'teacher' ? (
             <p className="cue">請聽老師唸第 {current.entryIndex + 1} 題</p>
           ) : current.mode === 'zhuyin' ? (
-            <p className="cue">字音　{zhuyinOf(entry) ?? entry.pinyin}</p>
+            <p className="cue">字音 <ZhuyinColumn text={zhuyinOf(entry) ?? entry.pinyin} className="zy-cue" /></p>
           ) : (
             <button type="button" className="big" onClick={() => speak(entry.word)}>聽題目</button>
           )}

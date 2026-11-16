@@ -5,6 +5,7 @@ import StrokeWriter from './StrokeWriter.jsx';
 import { targetOf, zhuyinOf, speakableMnemonic } from './logic.js';
 import { loadStrokes } from './data.js';
 import { speak } from './speech.js';
+import { WordZhuyin, ZhuyinColumn } from './Zhuyin.jsx';
 
 const W = 1920;
 const H = 1080;
@@ -96,16 +97,7 @@ export default function Presenter({ lesson, parts, practiceUrl, onExit }) {
     });
   }
 
-  function wordRuby(e, big) {
-    const zy = e.pinyin.split(/\s+/);
-    return (
-      <span className={big ? 'ruby-word big' : 'ruby-word'}>
-        {Array.from(e.word).map((c, k) => (
-          <ruby key={k} className={k === e.targetIdx ? 'tgt' : ''}>{c}<rt>{zy[k]}</rt></ruby>
-        ))}
-      </span>
-    );
-  }
+  const wordZy = (e, size) => <WordZhuyin word={e.word} pinyin={e.pinyin} targetIdx={e.targetIdx} className={`d-wz-${size}`} />;
 
   let body = null;
   if (slide.kind === 'cover') {
@@ -136,7 +128,7 @@ export default function Presenter({ lesson, parts, practiceUrl, onExit }) {
     body = (
       <div className="d-word">
         <p className="d-kicker">第 {slide.i + 1} 個語詞</p>
-        {wordRuby(entry, true)}
+        {wordZy(entry, 'big')}
         <p className="d-meaning">{info.meaning}</p>
         {info.note && <p className="d-note">{info.note}</p>}
         <div className="d-tools">
@@ -148,10 +140,12 @@ export default function Presenter({ lesson, parts, practiceUrl, onExit }) {
   } else if (slide.kind === 'card') {
     body = (
       <div className="d-card">
-        <div className="d-grid kai">{char}</div>
+        <div className="d-card-pair">
+          <div className="d-grid kai">{char}</div>
+          <ZhuyinColumn text={zhuyinOf(entry)} className="d-zy-xl" />
+        </div>
         <div className="d-card-info">
-          <p className="d-zhuyin">{zhuyinOf(entry)}</p>
-          <p className="d-word-small">{wordRuby(entry, false)}</p>
+          <p className="d-word-small">{wordZy(entry, 'small')}</p>
           {data && <p className="d-meta">{data.strokes.length} 畫</p>}
           <button type="button" onClick={() => speak(entry.word)}>唸</button>
         </div>

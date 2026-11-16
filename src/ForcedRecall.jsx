@@ -5,6 +5,7 @@ import StrokeWriter from './StrokeWriter.jsx';
 import PartsPaint from './PartsPaint.jsx';
 import PartsAssemble from './PartsAssemble.jsx';
 import PracticeWrite from './PracticeWrite.jsx';
+import { WordZhuyin, ZhuyinColumn } from './Zhuyin.jsx';
 import LessonPicker from './LessonPicker.jsx';
 import {
   ATTEMPTS, OBSERVE_SECONDS, targetOf, zhuyinOf, sentenceText, partsFor, checkCoverage, lessonLabel, speakableMnemonic,
@@ -148,12 +149,7 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
       {step === 'learn' && (
         <div className="stage">
           <h2>① 讀</h2>
-          <p className="zhuyin">字音　{zhuyin ?? entry.pinyin}</p>
-          <p className="word">
-            {Array.from(entry.word).map((c, i) => (
-              <span key={i} className={i === entry.targetIdx ? 'target' : ''}>{c}</span>
-            ))}
-          </p>
+          <p className="word"><WordZhuyin word={entry.word} pinyin={entry.pinyin} targetIdx={entry.targetIdx} /></p>
           <p className="sentence">{sentenceText(entry, true)}</p>
           <div className="row">
             <button type="button" onClick={() => speak(entry.word)}>報讀語詞</button>
@@ -220,7 +216,7 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
           {/* 步驟名「蓋」：練「蓋」字時改用「遮」，避免目標字出現在畫面上 */}
           <h2>{char === '蓋' ? '④ 遮' : '④ 蓋'}</h2>
           <p className="progress">第 {attempts.length + 1} 遍，共 {ATTEMPTS} 遍</p>
-          <p className="cue">字音　{zhuyin ?? entry.pinyin}</p>
+          <p className="cue">字音 <ZhuyinColumn text={zhuyin ?? entry.pinyin} className="zy-cue" /></p>
           <p className="sentence">{sentenceText(entry, false)}</p>
           <div className="visual"><Pad padRef={padRef} /></div>
           <div className="row">
