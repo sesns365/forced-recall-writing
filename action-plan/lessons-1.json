@@ -1,0 +1,83 @@
+{
+ "practice": [
+  {
+   "id": "L1",
+   "bookId": "第1節",
+   "number": 1,
+   "title": "投、究、股、協",
+   "label": "第1節　投、究、股、協",
+   "sentence": "投手研究股市，大家同心協力。",
+   "date": "11/17（二）",
+   "scene": "scenes/1.jpg",
+   "focus": "建立「寫一個、蓋一個」遮蔽規則",
+   "strokes": "7～8 畫",
+   "entries": [
+    {
+     "word": "投手",
+     "pinyin": "ㄊㄡˊ ㄕㄡˇ",
+     "targetIdx": 0,
+     "sentence": "[  ]手研究股市，大家同心協力。"
+    },
+    {
+     "word": "研究",
+     "pinyin": "ㄧㄢˊ ㄐㄧㄡˋ",
+     "targetIdx": 1,
+     "sentence": "投手研[  ]股市，大家同心協力。"
+    },
+    {
+     "word": "股市",
+     "pinyin": "ㄍㄨˇ ㄕˋ",
+     "targetIdx": 0,
+     "sentence": "投手研究[  ]市，大家同心協力。"
+    },
+    {
+     "word": "協力",
+     "pinyin": "ㄒㄧㄝˊ ㄌㄧˋ",
+     "targetIdx": 0,
+     "sentence": "投手研究股市，大家同心[  ]力。"
+    }
+   ]
+  }
+ ],
+ "retention": [
+  {
+   "id": "T1-immediate",
+   "bookId": "第1節",
+   "number": 1,
+   "title": "投、究、股、協",
+   "label": "第1節　投、究、股、協",
+   "date": "11/17（二）",
+   "scene": "scenes/1.jpg",
+   "focus": "建立「寫一個、蓋一個」遮蔽規則",
+   "strokes": "7～8 畫",
+   "entries": [
+    {
+     "word": "投手",
+     "pinyin": "ㄊㄡˊ ㄕㄡˇ",
+     "targetIdx": 0,
+     "sentence": "[  ]手研究股市，大家同心協力。"
+    },
+    {
+     "word": "研究",
+     "pinyin": "ㄧㄢˊ ㄐㄧㄡˋ",
+     "targetIdx": 1,
+     "sentence": "投手研[  ]股市，大家同心協力。"
+    },
+    {
+     "word": "股市",
+     "pinyin": "ㄍㄨˇ ㄕˋ",
+     "targetIdx": 0,
+     "sentence": "投手研究[  ]市，大家同心協力。"
+    },
+    {
+     "word": "協力",
+     "pinyin": "ㄒㄧㄝˊ ㄌㄧˋ",
+     "targetIdx": 0,
+     "sentence": "投手研究股市，大家同心[  ]力。"
+    }
+   ],
+   "testLabel": "第1節生字（立即）",
+   "delay": "immediate"
+  }
+ ]
+}

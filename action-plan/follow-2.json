@@ -1,0 +1,312 @@
+{
+ "practice": [
+  {
+   "id": "L1",
+   "bookId": "第1節",
+   "number": 1,
+   "title": "投、究、股、協",
+   "label": "第1節　投、究、股、協",
+   "sentence": "投手研究股市，大家同心協力。",
+   "date": "11/17（二）",
+   "scene": "scenes/1.jpg",
+   "focus": "建立「寫一個、蓋一個」遮蔽規則",
+   "strokes": "7～8 畫",
+   "entries": [
+    {
+     "word": "投手",
+     "pinyin": "ㄊㄡˊ ㄕㄡˇ",
+     "targetIdx": 0,
+     "sentence": "[  ]手研究股市，大家同心協力。"
+    },
+    {
+     "word": "研究",
+     "pinyin": "ㄧㄢˊ ㄐㄧㄡˋ",
+     "targetIdx": 1,
+     "sentence": "投手研[  ]股市，大家同心協力。"
+    },
+    {
+     "word": "股市",
+     "pinyin": "ㄍㄨˇ ㄕˋ",
+     "targetIdx": 0,
+     "sentence": "投手研究[  ]市，大家同心協力。"
+    },
+    {
+     "word": "協力",
+     "pinyin": "ㄒㄧㄝˊ ㄌㄧˋ",
+     "targetIdx": 0,
+     "sentence": "投手研究股市，大家同心[  ]力。"
+    }
+   ]
+  },
+  {
+   "id": "L2",
+   "bookId": "第2節",
+   "number": 2,
+   "title": "律、挖、城、財",
+   "label": "第2節　律、挖、城、財",
+   "sentence": "守紀律的隊伍挖到城堡裡的財寶。",
+   "date": "11/19（四）",
+   "scene": "scenes/2.jpg",
+   "focus": "掌握左右結構比例並熟練遮蔽書寫",
+   "strokes": "9～10 畫",
+   "entries": [
+    {
+     "word": "紀律",
+     "pinyin": "ㄐㄧˋ ㄌㄩˋ",
+     "targetIdx": 1,
+     "sentence": "守紀[  ]的隊伍挖到城堡裡的財寶。"
+    },
+    {
+     "word": "挖掘",
+     "pinyin": "ㄨㄚ ㄐㄩㄝˊ",
+     "targetIdx": 0,
+     "sentence": "守紀律的隊伍[  ]到城堡裡的財寶。"
+    },
+    {
+     "word": "城堡",
+     "pinyin": "ㄔㄥˊ ㄅㄠˇ",
+     "targetIdx": 0,
+     "sentence": "守紀律的隊伍挖到[  ]堡裡的財寶。"
+    },
+    {
+     "word": "財寶",
+     "pinyin": "ㄘㄞˊ ㄅㄠˇ",
+     "targetIdx": 0,
+     "sentence": "守紀律的隊伍挖到城堡裡的[  ]寶。"
+    }
+   ]
+  },
+  {
+   "id": "L3",
+   "bookId": "第3節",
+   "number": 3,
+   "title": "基、售、貨、票",
+   "label": "第3節　基、售、貨、票",
+   "sentence": "基地商店出售貨物和車票。",
+   "date": "11/24（二）",
+   "scene": "scenes/3.jpg",
+   "focus": "掌握上下結構比例並達成五大步驟自動化",
+   "strokes": "11 畫",
+   "entries": [
+    {
+     "word": "基地",
+     "pinyin": "ㄐㄧ ㄉㄧˋ",
+     "targetIdx": 0,
+     "sentence": "[  ]地商店出售貨物和車票。"
+    },
+    {
+     "word": "出售",
+     "pinyin": "ㄔㄨ ㄕㄡˋ",
+     "targetIdx": 1,
+     "sentence": "基地商店出[  ]貨物和車票。"
+    },
+    {
+     "word": "貨物",
+     "pinyin": "ㄏㄨㄛˋ ㄨˋ",
+     "targetIdx": 0,
+     "sentence": "基地商店出售[  ]物和車票。"
+    },
+    {
+     "word": "車票",
+     "pinyin": "ㄔㄜ ㄆㄧㄠˋ",
+     "targetIdx": 1,
+     "sentence": "基地商店出售貨物和車[  ]。"
+    }
+   ]
+  },
+  {
+   "id": "L4",
+   "bookId": "第4節",
+   "number": 4,
+   "title": "描、硬、詩、煩",
+   "label": "第4節　描、硬、詩、煩",
+   "sentence": "詩人描寫堅硬的石頭，越寫越心煩。",
+   "date": "11/26（四）",
+   "scene": "scenes/4.jpg",
+   "focus": "理解形聲與會意字原理並強化部件提取",
+   "strokes": "12～13 畫",
+   "entries": [
+    {
+     "word": "描寫",
+     "pinyin": "ㄇㄧㄠˊ ㄒㄧㄝˇ",
+     "targetIdx": 0,
+     "sentence": "詩人[  ]寫堅硬的石頭，越寫越心煩。"
+    },
+    {
+     "word": "堅硬",
+     "pinyin": "ㄐㄧㄢ ㄧㄥˋ",
+     "targetIdx": 1,
+     "sentence": "詩人描寫堅[  ]的石頭，越寫越心煩。"
+    },
+    {
+     "word": "詩人",
+     "pinyin": "ㄕ ㄖㄣˊ",
+     "targetIdx": 0,
+     "sentence": "[  ]人描寫堅硬的石頭，越寫越心煩。"
+    },
+    {
+     "word": "煩惱",
+     "pinyin": "ㄈㄢˊ ㄋㄠˇ",
+     "targetIdx": 0,
+     "sentence": "詩人描寫堅硬的石頭，越寫越心[  ]。"
+    }
+   ]
+  },
+  {
+   "id": "L5",
+   "bookId": "第5節",
+   "number": 5,
+   "title": "際、蓋、漢、箭",
+   "label": "第5節　際、蓋、漢、箭",
+   "sentence": "國際漢字館蓋在射箭場旁。",
+   "date": "12/1（二）",
+   "scene": "scenes/5.jpg",
+   "focus": "運用化整為零拆解多部件字並提升工整度",
+   "strokes": "14～15 畫",
+   "entries": [
+    {
+     "word": "國際",
+     "pinyin": "ㄍㄨㄛˊ ㄐㄧˋ",
+     "targetIdx": 1,
+     "sentence": "國[  ]漢字館蓋在射箭場旁。"
+    },
+    {
+     "word": "蓋子",
+     "pinyin": "ㄍㄞˋ ㄗ˙",
+     "targetIdx": 0,
+     "sentence": "國際漢字館[  ]在射箭場旁。"
+    },
+    {
+     "word": "漢字",
+     "pinyin": "ㄏㄢˋ ㄗˋ",
+     "targetIdx": 0,
+     "sentence": "國際[  ]字館蓋在射箭場旁。"
+    },
+    {
+     "word": "弓箭",
+     "pinyin": "ㄍㄨㄥ ㄐㄧㄢˋ",
+     "targetIdx": 1,
+     "sentence": "國際漢字館蓋在射[  ]場旁。"
+    }
+   ]
+  },
+  {
+   "id": "L6",
+   "bookId": "第6節",
+   "number": 6,
+   "title": "錶、遺、營、賺",
+   "label": "第6節　錶、遺、營、賺",
+   "sentence": "營隊活動時遺失的手錶，是哥哥打工賺錢買的。",
+   "date": "12/3（四）",
+   "scene": "scenes/6.jpg",
+   "focus": "攻克高筆畫字並將策略遷移至原班作業",
+   "strokes": "16～17 畫",
+   "entries": [
+    {
+     "word": "手錶",
+     "pinyin": "ㄕㄡˇ ㄅㄧㄠˇ",
+     "targetIdx": 1,
+     "sentence": "營隊活動時遺失的手[  ]，是哥哥打工賺錢買的。"
+    },
+    {
+     "word": "遺失",
+     "pinyin": "ㄧˊ ㄕ",
+     "targetIdx": 0,
+     "sentence": "營隊活動時[  ]失的手錶，是哥哥打工賺錢買的。"
+    },
+    {
+     "word": "營隊",
+     "pinyin": "ㄧㄥˊ ㄉㄨㄟˋ",
+     "targetIdx": 0,
+     "sentence": "[  ]隊活動時遺失的手錶，是哥哥打工賺錢買的。"
+    },
+    {
+     "word": "賺錢",
+     "pinyin": "ㄓㄨㄢˋ ㄑㄧㄢˊ",
+     "targetIdx": 0,
+     "sentence": "營隊活動時遺失的手錶，是哥哥打工[  ]錢買的。"
+    }
+   ]
+  }
+ ],
+ "retention": [
+  {
+   "id": "T6-week1",
+   "bookId": "第6節",
+   "number": 6,
+   "title": "錶、遺、營、賺",
+   "label": "第6節　錶、遺、營、賺",
+   "date": "12/3（四）",
+   "scene": "scenes/6.jpg",
+   "focus": "攻克高筆畫字並將策略遷移至原班作業",
+   "strokes": "16～17 畫",
+   "entries": [
+    {
+     "word": "手錶",
+     "pinyin": "ㄕㄡˇ ㄅㄧㄠˇ",
+     "targetIdx": 1,
+     "sentence": "營隊活動時遺失的手[  ]，是哥哥打工賺錢買的。"
+    },
+    {
+     "word": "遺失",
+     "pinyin": "ㄧˊ ㄕ",
+     "targetIdx": 0,
+     "sentence": "營隊活動時[  ]失的手錶，是哥哥打工賺錢買的。"
+    },
+    {
+     "word": "營隊",
+     "pinyin": "ㄧㄥˊ ㄉㄨㄟˋ",
+     "targetIdx": 0,
+     "sentence": "[  ]隊活動時遺失的手錶，是哥哥打工賺錢買的。"
+    },
+    {
+     "word": "賺錢",
+     "pinyin": "ㄓㄨㄢˋ ㄑㄧㄢˊ",
+     "targetIdx": 0,
+     "sentence": "營隊活動時遺失的手錶，是哥哥打工[  ]錢買的。"
+    }
+   ],
+   "testLabel": "第6節生字（一週保留）",
+   "delay": "week1"
+  },
+  {
+   "id": "T4-week2",
+   "bookId": "第4節",
+   "number": 4,
+   "title": "描、硬、詩、煩",
+   "label": "第4節　描、硬、詩、煩",
+   "date": "11/26（四）",
+   "scene": "scenes/4.jpg",
+   "focus": "理解形聲與會意字原理並強化部件提取",
+   "strokes": "12～13 畫",
+   "entries": [
+    {
+     "word": "描寫",
+     "pinyin": "ㄇㄧㄠˊ ㄒㄧㄝˇ",
+     "targetIdx": 0,
+     "sentence": "詩人[  ]寫堅硬的石頭，越寫越心煩。"
+    },
+    {
+     "word": "堅硬",
+     "pinyin": "ㄐㄧㄢ ㄧㄥˋ",
+     "targetIdx": 1,
+     "sentence": "詩人描寫堅[  ]的石頭，越寫越心煩。"
+    },
+    {
+     "word": "詩人",
+     "pinyin": "ㄕ ㄖㄣˊ",
+     "targetIdx": 0,
+     "sentence": "[  ]人描寫堅硬的石頭，越寫越心煩。"
+    },
+    {
+     "word": "煩惱",
+     "pinyin": "ㄈㄢˊ ㄋㄠˇ",
+     "targetIdx": 0,
+     "sentence": "詩人描寫堅硬的石頭，越寫越心[  ]。"
+    }
+   ],
+   "testLabel": "第4節生字（兩週保留）",
+   "delay": "week2"
+  }
+ ]
+}

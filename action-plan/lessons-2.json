@@ -1,0 +1,83 @@
+{
+ "practice": [
+  {
+   "id": "L2",
+   "bookId": "第2節",
+   "number": 2,
+   "title": "律、挖、城、財",
+   "label": "第2節　律、挖、城、財",
+   "sentence": "守紀律的隊伍挖到城堡裡的財寶。",
+   "date": "11/19（四）",
+   "scene": "scenes/2.jpg",
+   "focus": "掌握左右結構比例並熟練遮蔽書寫",
+   "strokes": "9～10 畫",
+   "entries": [
+    {
+     "word": "紀律",
+     "pinyin": "ㄐㄧˋ ㄌㄩˋ",
+     "targetIdx": 1,
+     "sentence": "守紀[  ]的隊伍挖到城堡裡的財寶。"
+    },
+    {
+     "word": "挖掘",
+     "pinyin": "ㄨㄚ ㄐㄩㄝˊ",
+     "targetIdx": 0,
+     "sentence": "守紀律的隊伍[  ]到城堡裡的財寶。"
+    },
+    {
+     "word": "城堡",
+     "pinyin": "ㄔㄥˊ ㄅㄠˇ",
+     "targetIdx": 0,
+     "sentence": "守紀律的隊伍挖到[  ]堡裡的財寶。"
+    },
+    {
+     "word": "財寶",
+     "pinyin": "ㄘㄞˊ ㄅㄠˇ",
+     "targetIdx": 0,
+     "sentence": "守紀律的隊伍挖到城堡裡的[  ]寶。"
+    }
+   ]
+  }
+ ],
+ "retention": [
+  {
+   "id": "T2-immediate",
+   "bookId": "第2節",
+   "number": 2,
+   "title": "律、挖、城、財",
+   "label": "第2節　律、挖、城、財",
+   "date": "11/19（四）",
+   "scene": "scenes/2.jpg",
+   "focus": "掌握左右結構比例並熟練遮蔽書寫",
+   "strokes": "9～10 畫",
+   "entries": [
+    {
+     "word": "紀律",
+     "pinyin": "ㄐㄧˋ ㄌㄩˋ",
+     "targetIdx": 1,
+     "sentence": "守紀[  ]的隊伍挖到城堡裡的財寶。"
+    },
+    {
+     "word": "挖掘",
+     "pinyin": "ㄨㄚ ㄐㄩㄝˊ",
+     "targetIdx": 0,
+     "sentence": "守紀律的隊伍[  ]到城堡裡的財寶。"
+    },
+    {
+     "word": "城堡",
+     "pinyin": "ㄔㄥˊ ㄅㄠˇ",
+     "targetIdx": 0,
+     "sentence": "守紀律的隊伍挖到[  ]堡裡的財寶。"
+    },
+    {
+     "word": "財寶",
+     "pinyin": "ㄘㄞˊ ㄅㄠˇ",
+     "targetIdx": 0,
+     "sentence": "守紀律的隊伍挖到城堡裡的[  ]寶。"
+    }
+   ],
+   "testLabel": "第2節生字（立即）",
+   "delay": "immediate"
+  }
+ ]
+}

@@ -1,0 +1,806 @@
+{
+ "投": {
+  "parts": [
+   {
+    "label": "扌",
+    "strokes": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "label": "殳",
+    "strokes": [
+     3,
+     4,
+     5,
+     6
+    ]
+   }
+  ],
+  "mnemonic": "手＋殳是投",
+  "tips": "「投」和「股」右邊都是「殳」，左邊分別是提手旁和月字旁。",
+  "video": null,
+  "word": "投手",
+  "meaning": "棒球比賽中，負責把球投給打擊者的球員。",
+  "note": null
+ },
+ "究": {
+  "parts": [
+   {
+    "label": "穴",
+    "strokes": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   {
+    "label": "九",
+    "strokes": [
+     5,
+     6
+    ]
+   }
+  ],
+  "mnemonic": "穴＋九是究",
+  "tips": "下面是「九」，不是「丸」。",
+  "video": "https://youtu.be/wQ5nm1LtyA4",
+  "word": "研究",
+  "meaning": "仔細觀察、思考，想弄清楚事情的道理。",
+  "note": null
+ },
+ "股": {
+  "parts": [
+   {
+    "label": "月",
+    "strokes": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "label": "殳",
+    "strokes": [
+     4,
+     5,
+     6,
+     7
+    ]
+   }
+  ],
+  "mnemonic": "月＋殳是股",
+  "tips": "左邊是月字旁，右邊是「殳」，和「投」的右邊一樣。",
+  "video": "https://youtu.be/ty7J3G7jE3o",
+  "word": "股市",
+  "meaning": "買賣股票的市場。",
+  "note": null
+ },
+ "協": {
+  "parts": [
+   {
+    "label": "十",
+    "strokes": [
+     0,
+     1
+    ]
+   },
+   {
+    "label": "力",
+    "strokes": [
+     2,
+     3
+    ]
+   },
+   {
+    "label": "力",
+    "strokes": [
+     4,
+     5
+    ]
+   },
+   {
+    "label": "力",
+    "strokes": [
+     6,
+     7
+    ]
+   }
+  ],
+  "mnemonic": "十＋三個力是協",
+  "tips": "右邊是三個「力」，不可寫成「刀」。",
+  "video": "https://youtu.be/0O2D9ZMe9eY",
+  "word": "協力",
+  "meaning": "大家一起出力、互相幫忙。",
+  "note": null
+ },
+ "律": {
+  "parts": [
+   {
+    "label": "彳",
+    "strokes": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "label": "聿",
+    "strokes": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   }
+  ],
+  "mnemonic": "雙人＋筆的下半是律",
+  "tips": "右邊「聿」的豎要穿過橫畫。",
+  "video": "https://youtu.be/AUrBox8xYD4",
+  "word": "紀律",
+  "meaning": "大家都要遵守的規矩。",
+  "note": null
+ },
+ "挖": {
+  "parts": [
+   {
+    "label": "扌",
+    "strokes": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "label": "穴",
+    "strokes": [
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   },
+   {
+    "label": "乙",
+    "strokes": [
+     8
+    ]
+   }
+  ],
+  "mnemonic": "扌＋穴＋乙是挖",
+  "tips": "右上是「穴」，下面是「乙」不是「九」（和「究」比一比）。",
+  "video": "https://youtu.be/vDN0_jjCcDw",
+  "word": "挖掘",
+  "meaning": "用工具把土挖開，把東西找出來。",
+  "note": null
+ },
+ "城": {
+  "parts": [
+   {
+    "label": "土",
+    "strokes": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "label": "成",
+    "strokes": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   }
+  ],
+  "mnemonic": "土＋成是城",
+  "tips": "左窄右寬，左邊「土」的最後一筆是提。",
+  "video": "https://youtu.be/ptUhGJoSoLA",
+  "word": "城堡",
+  "meaning": "用高高的城牆圍起來、可以防守的大建築。",
+  "note": null
+ },
+ "財": {
+  "parts": [
+   {
+    "label": "貝",
+    "strokes": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "label": "才",
+    "strokes": [
+     7,
+     8,
+     9
+    ]
+   }
+  ],
+  "mnemonic": "貝＋才是財",
+  "tips": "右邊是「才」，不是「寸」。",
+  "video": "https://youtu.be/MIWQrKf45kw",
+  "word": "財寶",
+  "meaning": "錢和珍貴的寶物。",
+  "note": null
+ },
+ "基": {
+  "parts": [
+   {
+    "label": "其",
+    "strokes": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   },
+   {
+    "label": "土",
+    "strokes": [
+     8,
+     9,
+     10
+    ]
+   }
+  ],
+  "mnemonic": "其＋土是基",
+  "tips": "上面「其」要寫扁，下面「土」不可寫成「士」。",
+  "video": "https://youtu.be/jMAJOa52oS8",
+  "word": "基地",
+  "meaning": "做事情的根據地，大家出發和回來的地方。",
+  "note": null
+ },
+ "售": {
+  "parts": [
+   {
+    "label": "隹",
+    "strokes": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   },
+   {
+    "label": "口",
+    "strokes": [
+     8,
+     9,
+     10
+    ]
+   }
+  ],
+  "mnemonic": "隹＋口是售",
+  "tips": "上方「隹」右邊有四橫。",
+  "video": "https://youtu.be/WQzynRH8L94",
+  "word": "出售",
+  "meaning": "把東西賣出去。",
+  "note": null
+ },
+ "貨": {
+  "parts": [
+   {
+    "label": "化",
+    "strokes": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "label": "貝",
+    "strokes": [
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ]
+   }
+  ],
+  "mnemonic": "化＋貝是貨",
+  "tips": "上面「化」寫扁，下面「貝」對齊中線。",
+  "video": "https://youtu.be/NETx__7qCGk",
+  "word": "貨物",
+  "meaning": "可以拿來買賣的東西。",
+  "note": null
+ },
+ "票": {
+  "parts": [
+   {
+    "label": "覀",
+    "strokes": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "label": "示",
+    "strokes": [
+     6,
+     7,
+     8,
+     9,
+     10
+    ]
+   }
+  ],
+  "mnemonic": "西字頭＋示是票",
+  "tips": "上方是「覀」，中間兩豎是直的。",
+  "video": "https://youtu.be/ny08qu9-aE4",
+  "word": "車票",
+  "meaning": "搭車時要買、要給人看的票。",
+  "note": null
+ },
+ "描": {
+  "parts": [
+   {
+    "label": "扌",
+    "strokes": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "label": "苗",
+    "strokes": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ]
+   }
+  ],
+  "mnemonic": "手＋苗是描",
+  "tips": "右邊「苗」是草字頭加「田」。",
+  "video": "https://youtu.be/ptzPiqYV5EA",
+  "word": "描寫",
+  "meaning": "用文字把看到的樣子寫出來。",
+  "note": null
+ },
+ "硬": {
+  "parts": [
+   {
+    "label": "石",
+    "strokes": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   {
+    "label": "更",
+    "strokes": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ]
+   }
+  ],
+  "mnemonic": "石＋更是硬",
+  "tips": "左邊「石」要寫窄，右邊「更」最後的撇捺要舒展。",
+  "video": "https://youtu.be/p6VULsFLFlk",
+  "word": "堅硬",
+  "meaning": "非常硬，不容易變形或打破。",
+  "note": null
+ },
+ "詩": {
+  "parts": [
+   {
+    "label": "言",
+    "strokes": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "label": "寺",
+    "strokes": [
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ]
+   }
+  ],
+  "mnemonic": "言＋寺是詩",
+  "tips": "右邊「寺」上面是「土」，不可寫成「士」。",
+  "video": "https://youtu.be/I2ijQtCVb-U",
+  "word": "詩人",
+  "meaning": "會寫詩、以寫詩出名的人。",
+  "note": null
+ },
+ "煩": {
+  "parts": [
+   {
+    "label": "火",
+    "strokes": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "label": "頁",
+    "strokes": [
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ]
+   }
+  ],
+  "mnemonic": "火＋頁是煩",
+  "tips": "右邊「頁」下方兩點不可漏。",
+  "video": "https://youtu.be/LGjvIttFeMQ",
+  "word": "煩惱",
+  "meaning": "心裡覺得煩、不舒服。",
+  "note": null
+ },
+ "際": {
+  "parts": [
+   {
+    "label": "阝",
+    "strokes": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "label": "祭",
+    "strokes": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13
+    ]
+   }
+  ],
+  "mnemonic": "阝＋祭是際",
+  "tips": "右邊「祭」下方是「示」。",
+  "video": "https://youtu.be/-6m-nSlyAi0",
+  "word": "國際",
+  "meaning": "和世界上很多國家有關的。",
+  "note": null
+ },
+ "蓋": {
+  "parts": [
+   {
+    "label": "艹",
+    "strokes": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "label": "去",
+    "strokes": [
+     4,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "label": "皿",
+    "strokes": [
+     9,
+     10,
+     11,
+     12,
+     13
+    ]
+   }
+  ],
+  "mnemonic": "艸＋去＋皿是蓋",
+  "tips": "中間是「去」，不是「土」。",
+  "video": "https://youtu.be/cPd8-a1vo-I",
+  "word": "蓋子",
+  "meaning": "蓋在瓶子、鍋子上面，可以打開的東西。",
+  "note": "「蓋」也可以是「建造」的意思，例如情境句裡的「蓋在射箭場旁」。"
+ },
+ "漢": {
+  "parts": [
+   {
+    "label": "氵",
+    "strokes": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "label": "廿",
+    "strokes": [
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "label": "口",
+    "strokes": [
+     7,
+     8,
+     9
+    ]
+   },
+   {
+    "label": "夫",
+    "strokes": [
+     10,
+     11,
+     12,
+     13
+    ]
+   }
+  ],
+  "mnemonic": "水＋廿＋口＋夫是漢",
+  "tips": "右下是「夫」。",
+  "video": "https://youtu.be/W1St65SFFg8",
+  "word": "漢字",
+  "meaning": "我們寫的國字，也叫中文字。",
+  "note": null
+ },
+ "箭": {
+  "parts": [
+   {
+    "label": "竹",
+    "strokes": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "label": "前",
+    "strokes": [
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14
+    ]
+   }
+  ],
+  "mnemonic": "竹＋前是箭",
+  "tips": "「前」的下方是「月」和「刂」。",
+  "video": "https://youtu.be/Tq4VwHkQRpw",
+  "word": "弓箭",
+  "meaning": "弓和箭，用弓把箭射出去。",
+  "note": null
+ },
+ "錶": {
+  "parts": [
+   {
+    "label": "金",
+    "strokes": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   },
+   {
+    "label": "表",
+    "strokes": [
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15
+    ]
+   }
+  ],
+  "mnemonic": "金＋表是錶",
+  "tips": "左邊「金」最後一筆是提；右邊「表」下方是「衣」的下半部。",
+  "video": "https://youtu.be/v4SUQrhVxSI",
+  "word": "手錶",
+  "meaning": "戴在手腕上看時間的小鐘錶。",
+  "note": null
+ },
+ "遺": {
+  "parts": [
+   {
+    "label": "貴",
+    "strokes": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "label": "辶",
+    "strokes": [
+     12,
+     13,
+     14,
+     15
+    ]
+   }
+  ],
+  "mnemonic": "貴＋辶是遺",
+  "tips": "先寫「貴」，再寫「辶」。",
+  "video": "https://youtu.be/kagOfLmP98k",
+  "word": "遺失",
+  "meaning": "東西不小心弄丟了。",
+  "note": null
+ },
+ "營": {
+  "parts": [
+   {
+    "label": "火",
+    "strokes": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "label": "火",
+    "strokes": [
+     4,
+     5,
+     6,
+     7
+    ]
+   },
+   {
+    "label": "冖",
+    "strokes": [
+     8,
+     9
+    ]
+   },
+   {
+    "label": "呂",
+    "strokes": [
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   }
+  ],
+  "mnemonic": "兩個火＋冖＋呂是營",
+  "tips": "下方是「呂」，兩個口之間有一短撇。",
+  "video": "https://youtu.be/5W2wCDcPJSY",
+  "word": "營隊",
+  "meaning": "一起參加露營或活動的團體。",
+  "note": null
+ },
+ "賺": {
+  "parts": [
+   {
+    "label": "貝",
+    "strokes": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "label": "兼",
+    "strokes": [
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   }
+  ],
+  "mnemonic": "貝＋兼是賺",
+  "tips": "右邊「兼」中間兩豎要穿過。",
+  "video": "https://youtu.be/nK8kXZUaLbI",
+  "word": "賺錢",
+  "meaning": "工作以後得到錢。",
+  "note": null
+ }
+}

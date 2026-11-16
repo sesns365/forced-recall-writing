@@ -1,0 +1,122 @@
+{
+ "practice": [
+  {
+   "id": "L3",
+   "bookId": "第3節",
+   "number": 3,
+   "title": "基、售、貨、票",
+   "label": "第3節　基、售、貨、票",
+   "sentence": "基地商店出售貨物和車票。",
+   "date": "11/24（二）",
+   "scene": "scenes/3.jpg",
+   "focus": "掌握上下結構比例並達成五大步驟自動化",
+   "strokes": "11 畫",
+   "entries": [
+    {
+     "word": "基地",
+     "pinyin": "ㄐㄧ ㄉㄧˋ",
+     "targetIdx": 0,
+     "sentence": "[  ]地商店出售貨物和車票。"
+    },
+    {
+     "word": "出售",
+     "pinyin": "ㄔㄨ ㄕㄡˋ",
+     "targetIdx": 1,
+     "sentence": "基地商店出[  ]貨物和車票。"
+    },
+    {
+     "word": "貨物",
+     "pinyin": "ㄏㄨㄛˋ ㄨˋ",
+     "targetIdx": 0,
+     "sentence": "基地商店出售[  ]物和車票。"
+    },
+    {
+     "word": "車票",
+     "pinyin": "ㄔㄜ ㄆㄧㄠˋ",
+     "targetIdx": 1,
+     "sentence": "基地商店出售貨物和車[  ]。"
+    }
+   ]
+  }
+ ],
+ "retention": [
+  {
+   "id": "T3-immediate",
+   "bookId": "第3節",
+   "number": 3,
+   "title": "基、售、貨、票",
+   "label": "第3節　基、售、貨、票",
+   "date": "11/24（二）",
+   "scene": "scenes/3.jpg",
+   "focus": "掌握上下結構比例並達成五大步驟自動化",
+   "strokes": "11 畫",
+   "entries": [
+    {
+     "word": "基地",
+     "pinyin": "ㄐㄧ ㄉㄧˋ",
+     "targetIdx": 0,
+     "sentence": "[  ]地商店出售貨物和車票。"
+    },
+    {
+     "word": "出售",
+     "pinyin": "ㄔㄨ ㄕㄡˋ",
+     "targetIdx": 1,
+     "sentence": "基地商店出[  ]貨物和車票。"
+    },
+    {
+     "word": "貨物",
+     "pinyin": "ㄏㄨㄛˋ ㄨˋ",
+     "targetIdx": 0,
+     "sentence": "基地商店出售[  ]物和車票。"
+    },
+    {
+     "word": "車票",
+     "pinyin": "ㄔㄜ ㄆㄧㄠˋ",
+     "targetIdx": 1,
+     "sentence": "基地商店出售貨物和車[  ]。"
+    }
+   ],
+   "testLabel": "第3節生字（立即）",
+   "delay": "immediate"
+  },
+  {
+   "id": "T1-week1",
+   "bookId": "第1節",
+   "number": 1,
+   "title": "投、究、股、協",
+   "label": "第1節　投、究、股、協",
+   "date": "11/17（二）",
+   "scene": "scenes/1.jpg",
+   "focus": "建立「寫一個、蓋一個」遮蔽規則",
+   "strokes": "7～8 畫",
+   "entries": [
+    {
+     "word": "投手",
+     "pinyin": "ㄊㄡˊ ㄕㄡˇ",
+     "targetIdx": 0,
+     "sentence": "[  ]手研究股市，大家同心協力。"
+    },
+    {
+     "word": "研究",
+     "pinyin": "ㄧㄢˊ ㄐㄧㄡˋ",
+     "targetIdx": 1,
+     "sentence": "投手研[  ]股市，大家同心協力。"
+    },
+    {
+     "word": "股市",
+     "pinyin": "ㄍㄨˇ ㄕˋ",
+     "targetIdx": 0,
+     "sentence": "投手研究[  ]市，大家同心協力。"
+    },
+    {
+     "word": "協力",
+     "pinyin": "ㄒㄧㄝˊ ㄌㄧˋ",
+     "targetIdx": 0,
+     "sentence": "投手研究股市，大家同心[  ]力。"
+    }
+   ],
+   "testLabel": "第1節生字（一週保留）",
+   "delay": "week1"
+  }
+ ]
+}

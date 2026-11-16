@@ -1,0 +1,25 @@
+{
+  "name": "forced-recall-writing",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test src/logic.test.mjs",
+    "build:single": "vite build --config vite.single.config.js && python3 tools/embed.py",
+    "build:pack": "vite build --config vite.single.config.js && python3 tools/pack_action_plan.py"
+  },
+  "dependencies": {
+    "hanzi-writer": "^3.7.3",
+    "qrcode": "^1.5.4",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^7.0.0",
+    "vite-plugin-singlefile": "^2.3.4"
+  }
+}
