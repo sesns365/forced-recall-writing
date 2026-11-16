@@ -6,6 +6,7 @@ import PartsPaint from './PartsPaint.jsx';
 import PartsAssemble from './PartsAssemble.jsx';
 import PracticeWrite from './PracticeWrite.jsx';
 import { WordZhuyin, ZhuyinColumn } from './Zhuyin.jsx';
+import StepStrip, { STEPS } from './StepStrip.jsx';
 import LessonPicker from './LessonPicker.jsx';
 import {
   ATTEMPTS, OBSERVE_SECONDS, targetOf, zhuyinOf, sentenceText, partsFor, checkCoverage, lessonLabel, speakableMnemonic,
@@ -143,7 +144,13 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
       {/* 課名可能含目標字，所以只在第 1 步顯示課次選單 */}
       {step === 'learn' && lessons.length > 1 && <LessonPicker lessons={lessons} value={lessonIndex} onChange={chooseLesson} />}
       {step !== 'done' && (
-        <p className="progress">第 {entryIndex + 1} ／ {lesson.entries.length} 字</p>
+        <div className="progress-row">
+          <p className="progress">第 {entryIndex + 1} ／ {lesson.entries.length} 字</p>
+          {/* 步驟名稱若剛好是目標字（例如「蓋」），回想時不顯示步驟列，避免目標字出現在畫面上 */}
+          {!(step === 'recall' && STEPS.some((x) => x.name === char)) && (
+            <StepStrip current={{ learn: 0, parts: 1, observe: 2, recall: 3, check: 4, correct: 4 }[step]} />
+          )}
+        </div>
       )}
 
       {step === 'learn' && (

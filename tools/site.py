@@ -47,6 +47,11 @@ def main():
         if src.exists():
             shutil.copy(src, scenes / f'{n}.jpg')
 
+    # 五大步驟卡（整張＋五格小圖）
+    steps = PUBLIC / 'steps'
+    if (RES / 'steps').exists():
+        shutil.copytree(RES / 'steps', steps, dirs_exist_ok=True)
+
     # 字型：只保留網站會出現的字（程式碼、教材資料、首頁）
     text = set()
     for f in list((ROOT / 'src').glob('*.js*')) + [ROOT / 'index.html', data_dir / 'lessons.json', data_dir / 'parts.json']:

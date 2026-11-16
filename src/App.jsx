@@ -52,6 +52,7 @@ function FullscreenButton() {
 function Home({ lessons }) {
   return (
     <section className="panel home">
+      <img className="home-stepcard" src={`${import.meta.env.BASE_URL}steps/step-card.jpg`} alt="寫字五大步驟：讀、拆、看、蓋、對" />
       <div className="home-grid">
         {lessons.practice.map((lesson) => (
           <article key={lesson.id} className="home-card">

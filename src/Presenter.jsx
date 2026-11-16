@@ -107,7 +107,7 @@ export default function Presenter({ lesson, parts, practiceUrl, onExit }) {
         <h1>第 {lesson.number} 節</h1>
         <p className="d-date">{lesson.date}</p>
         <p className="d-focus">{lesson.focus}</p>
-        <p className="d-steps">讀 → 拆 → 看 → 蓋 → 對</p>
+        <img className="d-stepcard" src={`${import.meta.env.BASE_URL}steps/step-card.jpg`} alt="寫字五大步驟：讀、拆、看、蓋、對" />
       </div>
     );
   } else if (slide.kind === 'scene') {
