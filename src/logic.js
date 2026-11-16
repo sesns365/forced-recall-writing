@@ -199,7 +199,7 @@ export function toCsv(records) {
   const rows = [CSV_HEADER.split(',')];
   for (const s of records.sessions) {
     s.attempts.forEach((a, i) => {
-      rows.push(['recall', s.at, s.seat, s.lesson, s.char, s.word, `attempt${i + 1}`, a.blank ? 'blank' : 'written', a.self ?? '', '']);
+      rows.push(['recall', s.at, s.seat, s.lesson, s.char, s.word, `attempt${i + 1}`, a.blank ? 'blank' : 'written', a.self ?? '', a.peeks ?? 0]);
     });
     if (s.correction) rows.push(['correction', s.at, s.seat, s.lesson, s.char, s.word, 'written', '', '', '']);
   }

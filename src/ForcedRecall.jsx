@@ -15,6 +15,8 @@ import { loadStrokes } from './data.js';
 import { addSession } from './records.js';
 import { speak } from './speech.js';
 
+const PEEK_SECONDS = 3;
+
 // 五大步驟：① 讀（字音、語詞、情境句）→ ② 拆（部件＋口訣）→ ③ 看（記住字形）
 // → ④ 蓋（遮住連寫 4 遍，中間不回饋）→ ⑤ 對（揭開核對，有錯再訂正）
 export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
@@ -25,6 +27,8 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
   const [subDone, setSubDone] = useState({});
   const [guidedCount, setGuidedCount] = useState(0);
   const [hasInk, setHasInk] = useState(false);
+  const [peekLeft, setPeekLeft] = useState(0); // 「忘記了」：看範字倒數
+  const [peeks, setPeeks] = useState(0); // 這一遍看了幾次範字
   const [stroke, setStroke] = useState(null);
   const [strokeError, setStrokeError] = useState('');
   const [attempts, setAttempts] = useState([]);
@@ -60,6 +64,8 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
     setGuidedCount(0);
     setHasInk(false);
     setAttempts([]);
+    setPeekLeft(0);
+    setPeeks(0);
     setSelfJudge([]);
     setCorrection(null);
     setLeft(OBSERVE_SECONDS);
@@ -73,6 +79,13 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
       .catch((error) => live && setStrokeError(error.message));
     return () => { live = false; };
   }, [lessonIndex, entryIndex]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // 忘記了：範字顯示倒數，時間到自動遮回去
+  useEffect(() => {
+    if (peekLeft <= 0) return undefined;
+    const timer = setTimeout(() => setPeekLeft((v) => v - 1), 1000);
+    return () => clearTimeout(timer);
+  }, [peekLeft]);
 
   // 觀察倒數：時間到自動遮住，進入回想
   useEffect(() => {
@@ -98,8 +111,10 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
   function finishAttempt(explicitBlank) {
     const pad = padRef.current;
     const blank = explicitBlank || !pad.hasInk();
-    const next = [...attempts, { png: blank ? null : pad.png(), blank }];
+    const next = [...attempts, { png: blank ? null : pad.png(), blank, peeks }];
     setAttempts(next);
+    setPeeks(0);
+    setPeekLeft(0);
     pad.clear();
     if (next.length >= ATTEMPTS) {
       setSelfJudge(next.map((a) => (a.blank ? 'diff' : null)));
@@ -125,7 +140,7 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
         char,
         word: entry.word,
         partsMissingStrokes: coverage ? coverage.missing.length : null,
-        attempts: attempts.map((a, i) => ({ png: a.png, blank: a.blank, self: selfJudge[i] })),
+        attempts: attempts.map((a, i) => ({ png: a.png, blank: a.blank, self: selfJudge[i], peeks: a.peeks ?? 0 })),
         correction,
       });
       goNext();
@@ -250,10 +265,23 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
             ))}
           </div>
           <p className="cue">字音 <ZhuyinColumn text={zhuyin ?? entry.pinyin} className="zy-cue" /></p>
-          <p className="sentence">{sentenceText(entry, false)}</p>
-          <div className="visual"><Pad padRef={padRef} onInkChange={setHasInk} /></div>
+          <p className="sentence">
+            {sentenceText(entry, false)}
+            <button type="button" className="speak-icon" aria-label="報讀句子" onClick={() => speak(sentenceText(entry, true))}>🔊</button>
+          </p>
+          <div className="visual peek-wrap">
+            <Pad padRef={padRef} onInkChange={setHasInk} />
+            {/* 忘記了：範字蓋在書寫格上 3 秒，書寫格的筆畫保留 */}
+            {peekLeft > 0 && (
+              <div className="peek-over" aria-live="polite">
+                <StrokeView data={stroke} fallbackChar={char} />
+                <span className="peek-count">{peekLeft}</span>
+              </div>
+            )}
+          </div>
           <div className="row">
-            <button type="button" className="big primary" disabled={!hasInk} onClick={() => finishAttempt(false)}>寫好了，遮起來</button>
+            <button type="button" className="big primary" disabled={!hasInk || peekLeft > 0} onClick={() => finishAttempt(false)}>寫好了，遮起來</button>
+            <button type="button" disabled={peekLeft > 0} onClick={() => { setPeeks((n) => n + 1); setPeekLeft(PEEK_SECONDS); }}>忘記了（看 3 秒）</button>
             <button type="button" onClick={() => padRef.current.clear()}>擦掉重寫</button>
           </div>
         </div>
@@ -267,7 +295,7 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
             {attempts.map((a, i) => (
               <figure key={i}>
                 {a.blank ? <div className="blank">空白</div> : <img src={a.png} alt={`第 ${i + 1} 遍`} />}
-                <figcaption>第 {i + 1} 遍</figcaption>
+                <figcaption>第 {i + 1} 遍{a.peeks ? `（看了 ${a.peeks} 次）` : ''}</figcaption>
                 {!a.blank && (
                   <div className="row">
                     <button

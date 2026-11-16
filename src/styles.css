@@ -298,3 +298,10 @@ h2 { font-size: 1.15rem; margin: 0; }
 .practice-slots.covered .slot { width: 40px; height: 40px; }
 .practice-slots.covered .slot-done { background: #ede9fe; border-color: #7c3aed; color: #6d28d9; }
 .slot-now { border-color: #7c3aed; border-style: solid; color: #6d28d9; }
+
+/* 蓋：句子報讀、忘記了看範字 */
+.speak-icon { min-height: 36px; padding: 2px 10px; margin-left: 8px; font-size: 1.1rem; vertical-align: middle; }
+.peek-wrap { position: relative; }
+.peek-over { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(255,255,255,.96); border-radius: 12px; }
+.peek-over .strokes { width: 92%; height: auto; border: 0; }
+.peek-count { position: absolute; top: 6px; right: 10px; font-size: 1.6rem; font-weight: 700; color: #7c3aed; }
