@@ -196,7 +196,7 @@ export default function Presenter({ lesson, parts, practiceUrl, onExit }) {
         <div className="d-go-text">
           <h2>拿出平板，開始練習！</h2>
           <ol>
-            <li>掃描 QR code，或打開首頁選「第 {lesson.number} 節　學生練習」</li>
+            <li>掃描 QR code，或打開首頁選「第 {lesson.number} 節　開始練習」</li>
             <li>拆部件、練習寫，再蓋起來寫 4 遍，自己核對</li>
             <li>4 個字都完成，會進入隨堂測驗</li>
           </ol>

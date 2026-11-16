@@ -19,7 +19,9 @@ function paintGrid(ctx) {
 }
 
 // padRef 由父層提供：父層可呼叫 clear()、hasInk()、png()。
-export default function Pad({ padRef, disabled = false }) {
+export default function Pad({ padRef, disabled = false, onInkChange }) {
+  const inkCb = useRef(onInkChange);
+  inkCb.current = onInkChange;
   const canvas = useRef(null);
   const strokes = useRef([]);
   const current = useRef(null);
@@ -50,6 +52,7 @@ export default function Pad({ padRef, disabled = false }) {
           strokes.current = [];
           current.current = null;
           paint();
+          inkCb.current?.(false);
         },
         hasInk() {
           return strokes.current.length > 0;
@@ -102,6 +105,7 @@ export default function Pad({ padRef, disabled = false }) {
         strokes.current.push(current.current);
         current.current = null;
         paint();
+        inkCb.current?.(true);
       }}
       onPointerCancel={() => {
         current.current = null;

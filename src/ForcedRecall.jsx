@@ -23,6 +23,8 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
   const [step, setStep] = useState('learn');
   const [sub, setSub] = useState(0);
   const [subDone, setSubDone] = useState({});
+  const [guidedCount, setGuidedCount] = useState(0);
+  const [hasInk, setHasInk] = useState(false);
   const [stroke, setStroke] = useState(null);
   const [strokeError, setStrokeError] = useState('');
   const [attempts, setAttempts] = useState([]);
@@ -42,6 +44,12 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
   // 第 ② 步的小步驟：看筆順 →（有部件資料時）拆部件 → 組部件 → 練習寫 4 次
   const SUBS = [['watch', '看筆順'], ...(partList ? [['paint', '拆部件'], ['assemble', '組部件']] : []), ['practice', '練習寫']];
   const subKey = SUBS[sub]?.[0];
+  const practiceIdx = SUBS.findIndex(([k]) => k === 'practice');
+  // 進入練習寫後，不能回到前面的小步驟；至少完成 1 次跟著筆順寫才能進入「看」
+  const lockedBefore = sub >= practiceIdx ? practiceIdx : -1;
+  const nextBlocked = subKey === 'practice' && guidedCount < 1;
+  // 「對」：每一遍寫出來的字都要自我檢核後，才能進入下一個字
+  const judgedAll = attempts.every((a, i) => a.blank || selfJudge[i]);
   const needsCorrection = selfJudge.includes('diff') || attempts.some((a) => a.blank);
 
   // 換字：重設流程，並載入筆順資料
@@ -49,6 +57,8 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
     setStep('learn');
     setSub(0);
     setSubDone({});
+    setGuidedCount(0);
+    setHasInk(false);
     setAttempts([]);
     setSelfJudge([]);
     setCorrection(null);
@@ -171,7 +181,7 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
           <h2>② 拆</h2>
           <div className="row substeps" role="tablist" aria-label="拆的小步驟">
             {SUBS.map(([key, text], i) => (
-              <button key={key} type="button" role="tab" aria-selected={i === sub} className={i === sub ? 'primary' : ''} onClick={() => setSub(i)}>
+              <button key={key} type="button" role="tab" aria-selected={i === sub} className={i === sub ? 'primary' : ''} disabled={i < lockedBefore} onClick={() => setSub(i)}>
                 {subDone[key] ? '⭐' : `${i + 1}.`} {text}
               </button>
             ))}
@@ -182,7 +192,12 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
             <StrokeWriter key="watch" data={stroke} mode="watch" onDone={() => setSubDone((d) => ({ ...d, watch: true }))} />
           )}
           {stroke && subKey === 'practice' && (
-            <PracticeWrite data={stroke} char={char} onDone={() => setSubDone((d) => ({ ...d, practice: true }))} />
+            <PracticeWrite
+              data={stroke}
+              char={char}
+              onGuided={() => setGuidedCount((n) => n + 1)}
+              onDone={() => setSubDone((d) => ({ ...d, practice: true }))}
+            />
           )}
           {stroke && subKey === 'paint' && (
             <PartsPaint data={stroke} partList={partList} onDone={() => setSubDone((d) => ({ ...d, paint: true }))} />
@@ -202,8 +217,11 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
           <button
             type="button"
             className="primary big"
+            disabled={nextBlocked}
             onClick={() => (sub + 1 < SUBS.length ? setSub(sub + 1) : startObserve())}
           >下一步</button>
+          {nextBlocked && <p className="hint">先完成一次「跟著筆順寫」，才能進入下一步。</p>}
+          {subKey === 'practice' && <p className="hint">進入練習寫後，不能回到前面的步驟。</p>}
         </div>
       )}
 
@@ -223,12 +241,19 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
           {/* 步驟名「蓋」：練「蓋」字時改用「遮」，避免目標字出現在畫面上 */}
           <h2>{char === '蓋' ? '④ 遮' : '④ 蓋'}</h2>
           <p className="progress">第 {attempts.length + 1} 遍，共 {ATTEMPTS} 遍</p>
+          {/* 已寫的遍數只顯示打勾，不顯示字跡（蓋住自己寫過的字） */}
+          <div className="practice-slots covered" aria-label={`已寫 ${attempts.length} 遍`}>
+            {Array.from({ length: ATTEMPTS }, (_, i) => (
+              <div key={i} className={'slot' + (i < attempts.length ? ' slot-done' : i === attempts.length ? ' slot-now' : '')}>
+                {i < attempts.length ? '✓' : i + 1}
+              </div>
+            ))}
+          </div>
           <p className="cue">字音 <ZhuyinColumn text={zhuyin ?? entry.pinyin} className="zy-cue" /></p>
           <p className="sentence">{sentenceText(entry, false)}</p>
-          <div className="visual"><Pad padRef={padRef} /></div>
+          <div className="visual"><Pad padRef={padRef} onInkChange={setHasInk} /></div>
           <div className="row">
-            <button type="button" className="big primary" onClick={() => finishAttempt(false)}>寫好了，遮起來</button>
-            <button type="button" onClick={() => finishAttempt(true)}>想不起來</button>
+            <button type="button" className="big primary" disabled={!hasInk} onClick={() => finishAttempt(false)}>寫好了，遮起來</button>
             <button type="button" onClick={() => padRef.current.clear()}>擦掉重寫</button>
           </div>
         </div>
@@ -266,12 +291,12 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
               <figcaption>訂正</figcaption>
             </figure>
           )}
-          <p className="hint">一筆一筆對照範字。寫錯沒關係，訂正就好。</p>
+          <p className="hint">{judgedAll ? '一筆一筆對照範字。寫錯沒關係，訂正就好。' : '每一遍都要按「一樣」或「不一樣」，才能進入下一個字。'}</p>
           <div className="row">
             {needsCorrection && !correction && (
               <button type="button" className="big" onClick={() => setStep('correct')}>訂正</button>
             )}
-            <button type="button" className="primary big" onClick={save}>完成，下一個字</button>
+            <button type="button" className="primary big" disabled={!judgedAll} onClick={save}>完成，下一個字</button>
           </div>
         </div>
       )}

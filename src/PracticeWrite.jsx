@@ -6,10 +6,10 @@ import StrokeWriter from './StrokeWriter.jsx';
 export const PRACTICE_TIMES = 4;
 const PEEK_SECONDS = 3;
 
-// 練習寫 4 次（遮住之前的練習，可以看範字）：
+// 練習寫 4 次（遮住之前的練習，可以看範字）；至少完成 1 次「跟著筆順寫」才能進入下一步：
 // 「直接寫」在田字格自由書寫；「跟著筆順寫」寫對一筆才出現標準筆畫（同自由練字板）。
-export default function PracticeWrite({ data, char, onDone }) {
-  const [mode, setMode] = useState('free');
+export default function PracticeWrite({ data, char, onDone, onGuided }) {
+  const [mode, setMode] = useState('guided');
   const [writes, setWrites] = useState([]);
   const [peek, setPeek] = useState(0);
   const [round, setRound] = useState(0);
@@ -31,6 +31,7 @@ export default function PracticeWrite({ data, char, onDone }) {
 
   function add(item) {
     setWrites((list) => (list.length >= PRACTICE_TIMES ? list : [...list, item]));
+    if (item.mode === 'guided') onGuided?.();
     setRound((v) => v + 1);
   }
 

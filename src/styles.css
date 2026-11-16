@@ -295,3 +295,6 @@ h2 { font-size: 1.15rem; margin: 0; }
 .d-date { font-size: 40px; }
 .d-focus { font-size: 40px; margin: 8px 0 14px; }
 .d-stepcard { width: 1180px; border-radius: 20px; box-shadow: 0 6px 24px rgba(0,0,0,.12); }
+.practice-slots.covered .slot { width: 40px; height: 40px; }
+.practice-slots.covered .slot-done { background: #ede9fe; border-color: #7c3aed; color: #6d28d9; }
+.slot-now { border-color: #7c3aed; border-style: solid; color: #6d28d9; }

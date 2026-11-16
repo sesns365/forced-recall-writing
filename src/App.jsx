@@ -11,11 +11,13 @@ import { makeZip } from './zip.js';
 
 const CODE_KEY = 'forced-recall:code';
 
-// 網址：#/（首頁）、#/3/present（第 3 節上課簡報）、#/3/practice（第 3 節學生練習）、#/test、#/teacher
+// 網址：#/（學生首頁）、#/3/practice（第 3 節學生練習）
+// 老師：#/t（老師首頁）、#/3/present（第 3 節上課簡報）、#/test（保留／追蹤測驗）、#/teacher（批改、匯出）
 function parseRoute() {
   const parts = window.location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
   if (/^\d+$/.test(parts[0] ?? '')) return { page: parts[1] === 'present' ? 'present' : 'practice', n: Number(parts[0]) };
   if (parts[0] === 'test' || parts[0] === 'teacher') return { page: parts[0] };
+  if (parts[0] === 't') return { page: 'thome' };
   return { page: 'home' };
 }
 
@@ -49,7 +51,7 @@ function FullscreenButton() {
   );
 }
 
-function Home({ lessons }) {
+function Home({ lessons, teacher = false }) {
   return (
     <section className="panel home">
       <img className="home-stepcard" src={`${import.meta.env.BASE_URL}steps/step-card.jpg`} alt="寫字五大步驟：讀、拆、看、蓋、對" />
@@ -60,16 +62,21 @@ function Home({ lessons }) {
             <p className="home-chars kai">{lesson.title.replace(/、/g, ' ')}</p>
             <p className="hint">{lesson.date ?? ''}{lesson.strokes ? `　${lesson.strokes}` : ''}</p>
             <div className="row">
-              {lesson.sentence && <button type="button" onClick={() => goto(`#/${lesson.number}/present`)}>上課簡報（老師）</button>}
-              <button type="button" className="primary" onClick={() => goto(`#/${lesson.number}/practice`)}>學生練習</button>
+              {teacher && lesson.sentence && (
+                <button type="button" className="primary" onClick={() => goto(`#/${lesson.number}/present`)}>上課簡報</button>
+              )}
+              {!teacher && <button type="button" className="primary big" onClick={() => goto(`#/${lesson.number}/practice`)}>開始練習</button>}
             </div>
           </article>
         ))}
       </div>
-      <div className="row home-more">
-        <button type="button" onClick={() => goto('#/test')}>保留／追蹤測驗</button>
-        <button type="button" onClick={() => goto('#/teacher')}>老師（批改、匯出）</button>
-      </div>
+      {teacher && (
+        <div className="row home-more">
+          <button type="button" onClick={() => goto('#/test')}>保留／追蹤測驗</button>
+          <button type="button" onClick={() => goto('#/teacher')}>批改、匯出、匯入合併</button>
+        </div>
+      )}
+      {teacher && <p className="hint">學生網址：{window.location.href.split('#')[0]}（學生只看得到練習）</p>}
     </section>
   );
 }
@@ -160,17 +167,20 @@ export default function App() {
   // 上課簡報：投影用，全畫面
   if (route.page === 'present' && lesson) {
     const base = window.location.href.split('#')[0];
-    return <Presenter key={lesson.id} lesson={lesson} parts={parts} practiceUrl={`${base}#/${lesson.number}/practice`} onExit={() => goto('#/')} />;
+    return <Presenter key={lesson.id} lesson={lesson} parts={parts} practiceUrl={`${base}#/${lesson.number}/practice`} onExit={() => goto('#/t')} />;
   }
 
   const title = route.page === 'practice' && lesson ? `第 ${lesson.number} 節　練習`
     : route.page === 'test' ? '保留／追蹤測驗'
-      : route.page === 'teacher' ? '老師' : '「字」從心生　強制回憶寫字';
+      : route.page === 'teacher' ? '批改與匯出'
+        : route.page === 'thome' ? '老師首頁' : '「字」從心生　強制回憶寫字';
+  const backTo = ['test', 'teacher'].includes(route.page) ? '#/t' : '#/';
+  const isHome = route.page === 'home' || route.page === 'thome';
 
   const header = (
     <header>
       <div className="head-left">
-        {route.page !== 'home' && <button type="button" className="back" onClick={() => goto('#/')}>首頁</button>}
+        {!isHome && <button type="button" className="back" onClick={() => goto(backTo)}>{backTo === '#/t' ? '老師首頁' : '首頁'}</button>}
         <h1>{title}</h1>
       </div>
       <div className="head-tools">
@@ -183,7 +193,7 @@ export default function App() {
     </header>
   );
 
-  const reminder = unexported >= EXPORT_REMIND_EVERY && route.page !== 'practice' && (
+  const reminder = unexported >= EXPORT_REMIND_EVERY && ['thome', 'teacher', 'test'].includes(route.page) && (
     <p role="status" className="reminder">
       已有 {unexported} 筆紀錄尚未匯出，建議到「老師」頁按「匯出紀錄（含字跡）」備份。
       {exportedAt && <span>上次匯出：{new Date(exportedAt).toLocaleString('zh-TW')}</span>}
@@ -219,6 +229,8 @@ export default function App() {
         <Merge />
       </div>
     );
+  } else if (route.page === 'thome') {
+    body = <Home lessons={lessons} teacher />;
   } else {
     body = <Home lessons={lessons} />;
   }
