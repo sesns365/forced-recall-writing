@@ -3,10 +3,10 @@ import Pad from './Pad.jsx';
 import StrokeView from './StrokeView.jsx';
 import StrokeWriter from './StrokeWriter.jsx';
 
-export const PRACTICE_TIMES = 4;
+export const PRACTICE_TIMES = 3;
 const PEEK_SECONDS = 3;
 
-// 練習寫 4 次（遮住之前的練習，可以看範字）；至少完成 1 次「跟著筆順寫」才能進入下一步：
+// 練習寫 3 次（遮住之前的練習，可以看範字）；至少完成 1 次「跟著筆順寫」才能進入下一步：
 // 「直接寫」在田字格自由書寫；「跟著筆順寫」寫對一筆才出現標準筆畫（同自由練字板）。
 export default function PracticeWrite({ data, char, onDone, onGuided }) {
   const [mode, setMode] = useState('guided');
@@ -67,7 +67,7 @@ export default function PracticeWrite({ data, char, onDone, onGuided }) {
           </div>
         ))}
       </div>
-      <p role="status" className="countdown">{done ? '⭐ 練習 4 次完成！' : `第 ${writes.length + 1} 次，共 ${PRACTICE_TIMES} 次`}</p>
+      <p role="status" className="countdown">{done ? `⭐ 練習 ${PRACTICE_TIMES} 次完成！` : `第 ${writes.length + 1} 次，共 ${PRACTICE_TIMES} 次`}</p>
       <div className="row">
         {mode === 'free' && peek <= 0 && (
           <>

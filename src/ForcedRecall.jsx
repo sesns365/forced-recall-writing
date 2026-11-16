@@ -41,7 +41,7 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
   const partList = partsFor(parts, char);
   const coverage = partList && stroke ? checkCoverage(partList, stroke.strokes.length) : null;
   const zhuyin = entry ? zhuyinOf(entry) : null;
-  // 第 ② 步的小步驟：看筆順 →（有部件資料時）拆部件 → 組部件 → 練習寫 4 次
+  // 第 ② 步的小步驟：看筆順 →（有部件資料時）拆部件 → 組部件 → 練習寫 3 次（至少完成 1 次跟著筆順寫）
   const SUBS = [['watch', '看筆順'], ...(partList ? [['paint', '拆部件'], ['assemble', '組部件']] : []), ['practice', '練習寫']];
   const subKey = SUBS[sub]?.[0];
   const practiceIdx = SUBS.findIndex(([k]) => k === 'practice');
