@@ -47,6 +47,7 @@ export default function PartsAssemble({ data, partList, onDone }) {
   const drag = useRef(null);
   const [pieces, setPieces] = useState(() => layout(data, partList).pieces);
   const { centers, height: HEIGHT } = layout(data, partList); // 上方田字格，下方待組區
+  const boxes = partList.map((p) => boxOf(data, p.strokes));
 
   useEffect(() => setPieces(layout(data, partList).pieces), [data, partList]);
 
@@ -106,6 +107,8 @@ export default function PartsAssemble({ data, partList, onDone }) {
             onPointerDown={(e) => down(e, g)}
             style={{ cursor: pieces[g].placed ? 'default' : 'grab', touchAction: 'none' }}
           >
+            {/* 透明外框：按在部件範圍內任何地方都能拿起來（筆畫細的部件也好拿） */}
+            <rect x={boxes[g].x0} y={boxes[g].y0} width={boxes[g].x1 - boxes[g].x0} height={boxes[g].y1 - boxes[g].y0} fill="transparent" />
             <g transform="translate(0,900) scale(1,-1)">
               {p.strokes.map((i) => (
                 <path key={i} d={data.strokes[i]} fill={PALETTE[g % PALETTE.length]} stroke="transparent" strokeWidth="60" />

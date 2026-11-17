@@ -305,3 +305,9 @@ h2 { font-size: 1.15rem; margin: 0; }
 .peek-over { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(255,255,255,.96); border-radius: 12px; }
 .peek-over .strokes { width: 92%; height: auto; border: 0; }
 .peek-count { position: absolute; top: 6px; right: 10px; font-size: 1.6rem; font-weight: 700; color: #7c3aed; }
+
+/* 選字：這一節的 4 個目標字 */
+.char-picker { display: flex; gap: 10px; justify-content: center; }
+.char-picker button { font-size: 2rem; min-width: 64px; min-height: 56px; padding: 4px 12px; position: relative; }
+.char-picker button.char-done { border-color: #16a34a; background: #f0fdf4; }
+.char-check { position: absolute; top: -8px; right: -8px; background: #16a34a; color: #fff; border-radius: 50%; width: 24px; height: 24px; font-size: .9rem; display: grid; place-items: center; }

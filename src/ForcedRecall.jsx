@@ -12,20 +12,31 @@ import {
   ATTEMPTS, OBSERVE_SECONDS, targetOf, zhuyinOf, sentenceText, partsFor, checkCoverage, lessonLabel, speakableMnemonic,
 } from './logic.js';
 import { loadStrokes } from './data.js';
-import { addSession } from './records.js';
+import { addSession, loadRecords } from './records.js';
 import { speak } from './speech.js';
 
 const PEEK_SECONDS = 3;
 
 // 五大步驟：① 讀（字音、語詞、情境句）→ ② 拆（部件＋口訣）→ ③ 看（記住字形）
 // → ④ 蓋（遮住連寫 4 遍，中間不回饋）→ ⑤ 對（揭開核對，有錯再訂正）
+// 這台裝置（這個代號）在這一節已完成的字
+function doneCharsOf(lesson, seat) {
+  const label = lessonLabel(lesson);
+  return new Set(loadRecords().sessions.filter((s) => s.seat === seat && s.lesson === label).map((s) => s.char));
+}
+
 export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
   const [lessonIndex, setLessonIndex] = useState(0);
-  const [entryIndex, setEntryIndex] = useState(0);
-  const [step, setStep] = useState('learn');
+  const [doneChars, setDoneChars] = useState(() => doneCharsOf(lessons[0], seat));
+  // 回來練習時，從還沒完成的字開始；全部完成就到結束畫面
+  const [entryIndex, setEntryIndex] = useState(() => {
+    const i = lessons[0].entries.findIndex((e) => !doneCharsOf(lessons[0], seat).has(targetOf(e)));
+    return i < 0 ? 0 : i;
+  });
+  const [step, setStep] = useState(() => (lessons[0].entries.every((e) => doneCharsOf(lessons[0], seat).has(targetOf(e))) ? 'done' : 'learn'));
+  const [maxSub, setMaxSub] = useState(0); // 目前做到第幾個小步驟（不能跳到還沒做到的）
   const [sub, setSub] = useState(0);
   const [subDone, setSubDone] = useState({});
-  const [guidedCount, setGuidedCount] = useState(0);
   const [hasInk, setHasInk] = useState(false);
   const [peekLeft, setPeekLeft] = useState(0); // 「忘記了」：看範字倒數
   const [peeks, setPeeks] = useState(0); // 這一遍看了幾次範字
@@ -45,13 +56,13 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
   const partList = partsFor(parts, char);
   const coverage = partList && stroke ? checkCoverage(partList, stroke.strokes.length) : null;
   const zhuyin = entry ? zhuyinOf(entry) : null;
-  // 第 ② 步的小步驟：看筆順 →（有部件資料時）拆部件 → 組部件 → 練習寫 3 次（至少完成 1 次跟著筆順寫）
+  // 第 ② 步的小步驟：看筆順 →（有部件資料時）拆部件 → 組部件 → 練習寫（完成 1 次跟著筆順寫）
   const SUBS = [['watch', '看筆順'], ...(partList ? [['paint', '拆部件'], ['assemble', '組部件']] : []), ['practice', '練習寫']];
   const subKey = SUBS[sub]?.[0];
   const practiceIdx = SUBS.findIndex(([k]) => k === 'practice');
-  // 進入練習寫後，不能回到前面的小步驟；至少完成 1 次跟著筆順寫才能進入「看」
+  // 每個小步驟都要完成才能按「下一步」；進入練習寫後不能回到前面的小步驟
   const lockedBefore = sub >= practiceIdx ? practiceIdx : -1;
-  const nextBlocked = subKey === 'practice' && guidedCount < 1;
+  const nextBlocked = !subDone[subKey];
   // 「對」：每一遍寫出來的字都要自我檢核後，才能進入下一個字
   const judgedAll = attempts.every((a, i) => a.blank || selfJudge[i]);
   const needsCorrection = selfJudge.includes('diff') || attempts.some((a) => a.blank);
@@ -60,8 +71,8 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
   useEffect(() => {
     setStep('learn');
     setSub(0);
+    setMaxSub(0);
     setSubDone({});
-    setGuidedCount(0);
     setHasInk(false);
     setAttempts([]);
     setPeekLeft(0);
@@ -100,6 +111,7 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
 
   function chooseLesson(index) {
     setLessonIndex(index);
+    setDoneChars(doneCharsOf(lessons[index], seat));
     setEntryIndex(0);
   }
 
@@ -122,12 +134,25 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
     }
   }
 
-  function goNext() {
-    if (entryIndex + 1 < lesson.entries.length) {
-      setEntryIndex(entryIndex + 1);
-    } else {
-      setStep('done');
+  // 存檔後：到下一個還沒完成的字；全部完成就到結束畫面
+  function goNext(done) {
+    const n = lesson.entries.length;
+    for (let k = 1; k <= n; k += 1) {
+      const i = (entryIndex + k) % n;
+      if (!done.has(targetOf(lesson.entries[i]))) {
+        setEntryIndex(i);
+        return;
+      }
     }
+    setStep('done');
+  }
+
+  function chooseChar(i) {
+    if (i === entryIndex) {
+      setStep('learn');
+      return;
+    }
+    setEntryIndex(i);
   }
 
   function save() {
@@ -143,7 +168,9 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
         attempts: attempts.map((a, i) => ({ png: a.png, blank: a.blank, self: selfJudge[i], peeks: a.peeks ?? 0 })),
         correction,
       });
-      goNext();
+      const done = new Set(doneChars).add(char);
+      setDoneChars(done);
+      goNext(done);
     } catch {
       setMessage('儲存失敗，瀏覽器儲存空間可能已滿，請先按「匯出紀錄（含字跡）」。');
     }
@@ -156,6 +183,20 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
   }
 
   if (!lesson) return <p>資料尚未載入。</p>;
+
+  // 這一節的目標字：已完成的打勾，可以直接點選要練的字
+  const charPicker = (
+    <div className="char-picker" role="group" aria-label="選擇要練習的字">
+      {lesson.entries.map((e, i) => {
+        const c = targetOf(e);
+        return (
+          <button key={c} type="button" aria-pressed={step !== 'done' && i === entryIndex} className={'kai' + (doneChars.has(c) ? ' char-done' : '')} onClick={() => chooseChar(i)}>
+            {c}{doneChars.has(c) && <span className="char-check">✓</span>}
+          </button>
+        );
+      })}
+    </div>
+  );
 
   const mnemonicBlock = info.mnemonic && (
     <div className="row mnemonic">
@@ -180,6 +221,7 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
 
       {step === 'learn' && (
         <div className="stage">
+          {charPicker}
           <h2>① 讀</h2>
           <p className="word"><WordZhuyin word={entry.word} pinyin={entry.pinyin} targetIdx={entry.targetIdx} /></p>
           <p className="sentence">{sentenceText(entry, true)}</p>
@@ -196,7 +238,7 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
           <h2>② 拆</h2>
           <div className="row substeps" role="tablist" aria-label="拆的小步驟">
             {SUBS.map(([key, text], i) => (
-              <button key={key} type="button" role="tab" aria-selected={i === sub} className={i === sub ? 'primary' : ''} disabled={i < lockedBefore} onClick={() => setSub(i)}>
+              <button key={key} type="button" role="tab" aria-selected={i === sub} className={i === sub ? 'primary' : ''} disabled={i < lockedBefore || i > maxSub} onClick={() => setSub(i)}>
                 {subDone[key] ? '⭐' : `${i + 1}.`} {text}
               </button>
             ))}
@@ -210,7 +252,6 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
             <PracticeWrite
               data={stroke}
               char={char}
-              onGuided={() => setGuidedCount((n) => n + 1)}
               onDone={() => setSubDone((d) => ({ ...d, practice: true }))}
             />
           )}
@@ -233,9 +274,20 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
             type="button"
             className="primary big"
             disabled={nextBlocked}
-            onClick={() => (sub + 1 < SUBS.length ? setSub(sub + 1) : startObserve())}
+            onClick={() => {
+              if (sub + 1 < SUBS.length) {
+                setSub(sub + 1);
+                setMaxSub((m) => Math.max(m, sub + 1));
+              } else {
+                startObserve();
+              }
+            }}
           >下一步</button>
-          {nextBlocked && <p className="hint">先完成一次「跟著筆順寫」，才能進入下一步。</p>}
+          {nextBlocked && (
+            <p className="hint">
+              {{ watch: '看完筆順動畫', paint: '把部件都塗對（按「檢查」）', assemble: '把部件都組回去', practice: '完成 1 次「跟著筆順寫」' }[subKey]}，才能按「下一步」。
+            </p>
+          )}
           {subKey === 'practice' && <p className="hint">進入練習寫後，不能回到前面的步驟。</p>}
         </div>
       )}
@@ -357,7 +409,8 @@ export default function ForcedRecall({ lessons, parts, seat, onFinished }) {
           ) : (
             <p className="hint">練習結束。測驗請老師按上方「測驗」開始。</p>
           )}
-          <button type="button" onClick={() => { setEntryIndex(0); setStep('learn'); }}>從頭再練一次</button>
+          <p className="hint">想再練哪一個字？</p>
+          {charPicker}
         </div>
       )}
 
